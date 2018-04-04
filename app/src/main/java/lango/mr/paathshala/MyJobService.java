@@ -4,8 +4,8 @@ package lango.mr.paathshala;
 
 import android.util.Log;
 
-import android.app.job.JobParameters;
-import android.app.job.JobService;
+import com.firebase.jobdispatcher.JobParameters;
+import com.firebase.jobdispatcher.JobService;
 
 public class MyJobService extends JobService {
 

@@ -18,7 +18,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import static android.content.ContentValues.TAG;
 
 public class MyFirebaseMessagingService extends FirebaseInstanceIdService {
-    @Override
+    //@Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // ...
 
