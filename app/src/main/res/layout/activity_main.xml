@@ -22,7 +22,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="213dp"
-            android:layout_above="@+id/button3"
+            android:layout_above="@+id/login"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:adjustViewBounds="false"
@@ -33,37 +33,39 @@
 
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/button2"
+            android:layout_above="@+id/register"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:gravity="center"
             android:hint="email"
-            android:inputType="text"
-            android:textColorHint="#000"/>
+            android:inputType="textEmailAddress"
+            android:textColor="#000"
+            android:textColorHint="#AAA" />
 
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editText"
-            android:gravity="center"
-            android:ems="10"
-            android:hint="password"
+            android:layout_alignStart="@+id/email"
             android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="password"
             android:inputType="textPassword"
-            android:textColorHint="#000"/>
+            android:textColor="#000"
+            android:textColorHint="#888" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/button2"
-            android:layout_alignStart="@+id/button2"
+            android:layout_above="@+id/register"
+            android:layout_alignStart="@+id/register"
             android:text="Login"
             android:layout_marginBottom="10dp"
             android:background="#ee5253"
@@ -71,7 +73,7 @@
             tools:layout_editor_absoluteY="302dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
