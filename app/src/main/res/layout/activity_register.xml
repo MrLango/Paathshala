@@ -10,12 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Register"
+        android:text="REGISTER"
         android:textSize="40sp"
         android:id="@+id/textView"
         android:layout_marginBottom="60dp"
         android:textColor="#000"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/beb"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -26,12 +28,25 @@
         >
 
         <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:hint="Name"
+            android:layout_marginBottom="10dp"
+            android:inputType="textCapWords"
+            android:textColor="#000"
+            android:textColorHint="#AAA" />
+
+        <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Enter Email Id"
+            android:hint="Email"
             android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
             android:inputType="textEmailAddress"
             android:textColor="#000"
             android:textColorHint="#AAA"
@@ -43,7 +58,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center_horizontal"
-            android:hint="Enter Password"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textColor="#000"
             android:textColorHint="#AAA"
@@ -90,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Verify"
-            android:layout_marginBottom="33dp"
+            android:layout_marginBottom="20dp"
             android:background="#ee5253"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"

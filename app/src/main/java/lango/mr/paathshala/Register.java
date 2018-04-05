@@ -1,5 +1,6 @@
 package lango.mr.paathshala;
 
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,6 +24,7 @@ public class Register extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     private EditText email;
     private EditText password;
+    private EditText name;
     private Button register;
     private Button verify;
     private String e_mail;
@@ -29,12 +32,17 @@ public class Register extends AppCompatActivity {
     private String pass;
     private RadioButton teacher,student;
     private FirebaseAuth mAuth;
+//    private TextView txtyour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+//        txtyour = findViewById(R.id.textView);
+//        Typeface type = Typeface.createFromAsset(getAssets(),"font/bebas.ttf");
+//        txtyour.setTypeface(type);
 
         email=findViewById(R.id.email);
+        name = findViewById(R.id.name);
         teacher=findViewById(R.id.TeacherRegister);
         student=findViewById(R.id.StudentRegister);
         password=findViewById(R.id.password);
