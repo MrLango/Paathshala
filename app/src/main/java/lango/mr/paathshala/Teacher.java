@@ -25,6 +25,7 @@ public class Teacher extends AppCompatActivity {
                 db.close();
                 Intent i=new Intent(Teacher.this,MainActivity.class);
                 startActivity(i);
+                finish();
 
             }
         });

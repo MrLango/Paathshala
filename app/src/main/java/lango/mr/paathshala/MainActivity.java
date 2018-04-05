@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 db.close();
                 Intent i = new Intent(MainActivity.this, Teacher.class);
                 startActivity(i);
+                finish();
             }
         }
         catch (Exception e){
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             db.execSQL("INSERT INTO USER VALUES('"+email+"','"+password+"');");
                             Intent i=new Intent(MainActivity.this,Teacher.class);
                             startActivity(i);
+                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

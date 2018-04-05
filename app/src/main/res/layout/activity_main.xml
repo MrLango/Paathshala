@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:theme="@android:style/Theme.Material.Wallpaper.NoTitleBar"
     tools:context="lango.mr.paathshala.MainActivity"
-    android:background="@drawable/gradient2"
+    android:background="@drawable/gradient5"
     >
 
 
