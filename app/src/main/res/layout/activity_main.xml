@@ -4,38 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lango.mr.paathshala.MainActivity">
+    android:theme="@android:style/Theme.Material.Wallpaper.NoTitleBar"
+    tools:context="lango.mr.paathshala.MainActivity"
+    android:background="@drawable/gradient2"
+    >
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:layout_above="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp"
-        android:text="Register"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="83dp" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Register"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="211dp" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button2"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="86dp"
-        android:text="LogIn"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="302dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="213dp"
+            android:layout_above="@+id/button3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
+            android:adjustViewBounds="false"
+            android:paddingTop="20dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:srcCompat="@drawable/logowithtext" />
+
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="email"
+            android:inputType="text"
+            android:textColorHint="#000"/>
+
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="password"
+            android:layout_marginBottom="20dp"
+            android:inputType="textPassword"
+            android:textColorHint="#000"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button2"
+            android:layout_alignStart="@+id/button2"
+            android:text="Login"
+            android:layout_marginBottom="10dp"
+            android:background="#ee5253"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="33dp"
+            android:text="Register"
+            android:background="#ee5253"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="211dp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
 
 </RelativeLayout>
