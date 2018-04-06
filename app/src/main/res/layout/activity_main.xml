@@ -83,7 +83,10 @@
             android:background="#ee5253"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="211dp" />
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listview"></ListView>
 
     </LinearLayout>
 

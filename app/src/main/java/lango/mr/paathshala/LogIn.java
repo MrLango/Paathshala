@@ -11,11 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogIn extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
@@ -23,14 +30,52 @@ public class LogIn extends AppCompatActivity {
     private EditText password;
     private Button login;
     FirebaseAuth mAuth;
+    Firebase myRef1;
+    int n,i=0;
+    List<User> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        Firebase.setAndroidContext(this);
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
         login=findViewById(R.id.login);
+        Toast.makeText(this,i+"",Toast.LENGTH_LONG).show();
         mAuth = FirebaseAuth.getInstance();
+        myRef1=new Firebase("https://paathshala-48aa9.firebaseio.com/no_of_users");
+
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
+                String n1=dataSnapshot.getValue(String.class);
+                n= Integer.parseInt(n1);
+                Toast.makeText(getApplicationContext(),n+"",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        user=new ArrayList<>();
+        myRef1=new Firebase("https://paathshala-48aa9.firebaseio.com/user");
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
+                user.clear();
+                int i=0;
+                for(DataSnapshot user_info: dataSnapshot.getChildren()){
+                    user=user_info.getValue(List.class);
+                    Toast.makeText(getApplicationContext(),"Soap:"+(i++)+"",Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +85,10 @@ public class LogIn extends AppCompatActivity {
         });
 
     }
-    private void signIn(String email, String password) {
+
+
+
+            private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
             return;
