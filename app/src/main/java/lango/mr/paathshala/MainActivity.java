@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         db = openOrCreateDatabase("logged.db", MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS USER(EMAIL VARCHAR(30),PASSWORD VARCHAR(30));");
-
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
