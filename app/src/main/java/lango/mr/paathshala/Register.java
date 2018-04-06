@@ -1,6 +1,9 @@
 package lango.mr.paathshala;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +15,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +29,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
 public class Register extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     private EditText email;
@@ -27,11 +37,15 @@ public class Register extends AppCompatActivity {
     private EditText name;
     private Button register;
     private Button verify;
-    private String e_mail;
+    private String e_mail,namee;
     private TeacherStudent ts;
     private String pass;
     private RadioButton teacher,student;
     private FirebaseAuth mAuth;
+    int n,i;
+    private PowerManager mPowerManager;
+    private PowerManager.WakeLock mWakeLock;
+    Firebase myRef1;
 //    private TextView txtyour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +54,7 @@ public class Register extends AppCompatActivity {
 //        txtyour = findViewById(R.id.textView);
 //        Typeface type = Typeface.createFromAsset(getAssets(),"font/bebas.ttf");
 //        txtyour.setTypeface(type);
-
+        Firebase.setAndroidContext(this);
         email=findViewById(R.id.email);
         name = findViewById(R.id.name);
         teacher=findViewById(R.id.TeacherRegister);
@@ -48,8 +62,34 @@ public class Register extends AppCompatActivity {
         password=findViewById(R.id.password);
         register=findViewById(R.id.register);
         verify=findViewById(R.id.Verify);
-
+        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (mWakeLock == null) {
+            mWakeLock = mPowerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "incall");
+        }
+        if (!mWakeLock.isHeld()) {
+            Log.d(TAG, "New call active : acquiring incall (CPU only) wake lock");
+            mWakeLock.acquire();
+        } else {
+            Log.d(TAG, "New call active while incall (CPU only) wake lock already active");
+        }
         mAuth = FirebaseAuth.getInstance();
+        myRef1=new Firebase("https://paathshala-48aa9.firebaseio.com/no_of_users");
+        i=0;
+        //Toast.makeText(getApplicationContext(),myRef1.getParent()+"egergre",Toast.LENGTH_LONG);
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
+                String n1=dataSnapshot.getValue(String.class);
+                n= Integer.parseInt(n1);
+                i=1;
+                Toast.makeText(getApplicationContext(),n+"",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,19 +130,27 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this, "Registered",
                                     Toast.LENGTH_SHORT).show();
                             FirebaseDatabase database=FirebaseDatabase.getInstance();
-                            DatabaseReference myRef=database.getReference("TeacherStudent");
+                            DatabaseReference myRef=database.getReference("user");
+
+                            //while(i==0){}
                             if (teacher.isChecked()) {
-                                myRef=myRef.child("teachers");
-                                myRef=myRef.push();
-                                ts=new TeacherStudent(email.substring(0,email.indexOf("@")).toString());
-                                myRef.setValue(ts);
+                                n+=1;
+                                myRef=myRef.child(n+"");
+                                myRef.child("email").setValue(email);
+                                myRef.child("name").setValue(name.getText().toString());
+                                myRef.child("type").setValue("teacher");
                             }
                             else if(student.isChecked()) {
-                                ts=new TeacherStudent(email.substring(0,email.indexOf("@")).toString());
-                                myRef=myRef.child("students");
-                                myRef=myRef.push();
-                                myRef.setValue(ts);
+                                n+=1;
+                                myRef=myRef.child(n+"");
+                                myRef.child("email").setValue(email);
+                                myRef.child("name").setValue(name.getText().toString());
+                                myRef.child("type").setValue("student");
                             }
+                            myRef1.setValue((n)+"");
+
+
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -117,6 +165,14 @@ public class Register extends AppCompatActivity {
 
     private boolean validateForm() {
         boolean valid = true;
+
+        namee = name.getText().toString();
+        if (TextUtils.isEmpty(namee)) {
+            name.setError("Required.");
+            valid = false;
+        } else {
+            name.setError(null);
+        }
 
         e_mail = email.getText().toString();
         if (TextUtils.isEmpty(e_mail)) {

@@ -9,8 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class Teacher extends AppCompatActivity {
-
+public class Student extends AppCompatActivity {
     SQLiteDatabase db;
     private static final String TAG = "EmailPassword";
     private PowerManager mPowerManager;
@@ -18,26 +17,7 @@ public class Teacher extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher);
-
-        findViewById(R.id.create).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(Teacher.this,Create_class.class);
-                Bundle bn=new Bundle();
-                bn.putString("name",getIntent().getExtras().getString("name"));
-                bn.putString("email",getIntent().getExtras().getString("email"));
-                bn.putInt("id",getIntent().getExtras().getInt("id"));
-                i.putExtras(bn);
-                startActivity(i);
-            }
-        });
-        findViewById(R.id.post).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                
-            }
-        });
+        setContentView(R.layout.activity_student);
         mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         if (mWakeLock == null) {
             mWakeLock = mPowerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "incall");
@@ -55,7 +35,7 @@ public class Teacher extends AppCompatActivity {
 
                 db.execSQL("DROP TABLE USER;");
                 db.close();
-                Intent i=new Intent(Teacher.this,MainActivity.class);
+                Intent i=new Intent(Student.this,MainActivity.class);
                 startActivity(i);
                 finish();
 

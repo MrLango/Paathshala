@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="lango.mr.paathshala">
-
+    <uses-permission android:name="android.hardware.sensor.proximity"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -9,32 +10,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" android:parentActivityName=".MainActivity" android:screenOrientation="portrait" />
-        <activity android:name=".LogIn" android:parentActivityName=".MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Teacher" android:screenOrientation="portrait" />
-
-        <service android:name=".MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-        <service android:name=".MyJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
-            </intent-filter>
-        </service>
-        <service
-            android:name=".MyFirebaseMessagingService"
-            android:enabled="true"
-            android:exported="true"></service>
+        <activity
+            android:name=".Register"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LogIn"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Teacher"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Student" />
+        <activity android:name=".Create_class"></activity>
+        <service android:name=".ProximitySensor"></service>
     </application>
 
 </manifest>
