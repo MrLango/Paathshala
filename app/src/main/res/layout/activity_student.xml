@@ -10,14 +10,21 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teacher Activity"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="110dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Welcome, Student"
         tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="206dp"
-        android:textAlignment="center"/>
+        tools:layout_editor_absoluteY="206dp" />
 
     <Button
         android:layout_width="match_parent"
         android:text="Logout"
         android:layout_height="wrap_content"
-        android:id="@+id/logout"/>
+        android:id="@+id/logout"
+        android:layout_marginBottom="33dp"
+        android:background="#ee5253"
+        android:textColor="#FFF"/>
 </RelativeLayout>

@@ -37,7 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add" />
+            android:text="Add"
+            android:layout_marginBottom="33dp"
+            android:background="#ee5253"
+            android:textColor="#FFF" />
     </LinearLayout>
 
     <Button
@@ -45,7 +48,10 @@
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:text="Submit"
+        android:layout_marginBottom="33dp"
+        android:background="#ee5253"
+        android:textColor="#FFF" />
 
     <ListView
         android:layout_marginTop="30dp"
